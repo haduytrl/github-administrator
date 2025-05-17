@@ -74,7 +74,7 @@ class UserListViewController: BaseViewController<UserListViewModel> {
 
 extension UserListViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        let triggerRow = max(0, viewModel.users.count - 2)
+        let triggerRow = max(0, dataSource.snapshot().numberOfItems - 2)
         guard indexPath.row == triggerRow else { return }
         viewModel.performUpdate()
     }

@@ -34,7 +34,7 @@ An iOS application that allows browsing GitHub users and viewing their details.
 ##** Testing 🧪 **##
 
 🚀 This project is split into multiple Swift packages **and** a top-level app target. Each has its own test suite.
-👉 1. Open the workspace in Xcode.  
+👉 1. Open the workspace in Xcode.
 👉 2. Select the scheme for the package or app you want to test:  
    🗂️ CoreKit, DomainKit, Infrastructure, Data, FeatureXYZ, etc.  
    🗂️ GitHubHome (top-level app/unit tests) or GitHubHomeUITests (UI tests) 
