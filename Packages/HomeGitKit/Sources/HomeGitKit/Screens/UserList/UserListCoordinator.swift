@@ -53,6 +53,8 @@ private extension UserListCoordinator {
             apiClient: apiClient,
             username: username
         )
+        coordinator.parentCoordinator = self
+        childCoordinators.append(coordinator)
         coordinator.start()
     }
 }
