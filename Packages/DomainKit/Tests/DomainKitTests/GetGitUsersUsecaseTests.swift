@@ -77,7 +77,6 @@ private class MockGitUsersRepository: GitUsersRepository {
     var error: Error?
     
     var fetchGitUsersCalled = false
-    var fetchGitUserDetailCalled = false
     
     var lastSizeRequested: Int?
     var lastSinceRequested: Int?

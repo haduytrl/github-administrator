@@ -12,7 +12,7 @@ public class APIClient: APIClientProtocol {
         defaulHeaders: [String: String]? = nil,
         session: Session = Session(
             configuration: URLSessionConfiguration.af.default,
-            interceptor: nil,
+            interceptor: RetryHandler(),
             eventMonitors: [LoggingEventMonitor()]
         )
     ) {
@@ -50,15 +50,15 @@ public class APIClient: APIClientProtocol {
         
         // ── Validate, decode & map errors ──
         let dataResp = await request
-            .validate(statusCode: 200..<300)
+            .validate()
             .serializingDecodable(T.Response.self)
             .response
         
         switch dataResp.result {
-        case .success(let value):
+        case let .success(value):
             return value
-        case .failure(let afError):
-            throw mapError(afError, statusCode: dataResp.response?.statusCode)
+        case let .failure(error):
+            throw mapError(error, statusCode: dataResp.response?.statusCode)
         }
     }
 }
